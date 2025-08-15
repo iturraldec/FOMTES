@@ -1,0 +1,11 @@
+{
+    "name": "AtencionCiudadano",
+    "alias": "atencionciudadano",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AtencionCiudadano\\Providers\\AtencionCiudadanoServiceProvider"
+    ],
+    "files": []
+}
