@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c633754dc1c12aba45ba3cda97ed2d0a",
+    "content-hash": "f15d63b6774b781fc5360352bdb091e2",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4063,6 +4063,84 @@
                 }
             ],
             "time": "2025-07-07T06:15:55+00:00"
+        },
+        {
+            "name": "panicdevs/modulite",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/panicdevs/modulite.git",
+                "reference": "654ccc406cb8fde0af6df3a5bc8f0d153d21c3ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/panicdevs/modulite/zipball/654ccc406cb8fde0af6df3a5bc8f0d153d21c3ee",
+                "reference": "654ccc406cb8fde0af6df3a5bc8f0d153d21c3ee",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "nwidart/laravel-modules": "^11.0|^12.0",
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "PanicDevs\\Modulite\\Providers\\ModuliteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PanicDevs\\Modulite\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Armin Hooshmand",
+                    "email": "NotifyHex@panicdevs.agency",
+                    "homepage": "https://github.com/NotifyHex",
+                    "role": "Developer"
+                },
+                {
+                    "name": "PanicDevs",
+                    "email": "hello@panicdevs.agency",
+                    "homepage": "https://panicdevs.agency",
+                    "role": "Organization"
+                }
+            ],
+            "description": "Automatic Filament Panel Provider discovery for modular Laravel applications with multi-layer caching and performance optimization",
+            "homepage": "https://github.com/panicdevs/modulite",
+            "keywords": [
+                "caching",
+                "discovery",
+                "filament",
+                "laravel",
+                "modular",
+                "modules",
+                "nwidart",
+                "panels",
+                "panicdevs",
+                "performance"
+            ],
+            "support": {
+                "docs": "https://github.com/panicdevs/modulite#readme",
+                "issues": "https://github.com/panicdevs/modulite/issues",
+                "security": "https://github.com/panicdevs/modulite/security/advisories",
+                "source": "https://github.com/panicdevs/modulite"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/panicdevs",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-08-15T08:21:01+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -11543,12 +11621,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

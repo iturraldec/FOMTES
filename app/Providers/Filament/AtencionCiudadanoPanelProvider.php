@@ -18,24 +18,25 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use PanicDevs\Modulite\Attributes\FilamentPanel;
 
-class AtencionCiudadanaPanelProvider extends PanelProvider
+#[FilamentPanel]
+class AtencionCiudadanoPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->id('atencionCiudadano')
             ->path('atencion-ciudadano')
-            ->login()
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Modules/app/Filament/AtencionCiudadana/Resources'), for: 'Modules\AtencionCiudadano\app\Filament\Resources')
-            ->discoverPages(in: app_path('Modules/app/Filament/AtencionCiudadana/Pages'), for: 'Modules\AtencionCiudadano\app\Filament\Pages')
+            ->discoverResources(in: app_path('Filament/AtencionCiudadano/Resources'), for: 'App\Filament\AtencionCiudadano\Resources')
+            ->discoverPages(in: app_path('Filament/AtencionCiudadano/Pages'), for: 'App\Filament\AtencionCiudadano\Pages')
             ->pages([
                 Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Modules/app/Filament/AtencionCiudadana/Widgets'), for: 'Modules\AtencionCiudadano\app\Filament\Widgets')
+            ->discoverWidgets(in: app_path('Filament/AtencionCiudadano/Widgets'), for: 'App\Filament\AtencionCiudadano\Widgets')
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
