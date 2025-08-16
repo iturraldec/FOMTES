@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers\Filament;
+namespace Modules\AtencionCiudadano\app\Providers;
 
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -28,15 +28,16 @@ class AtencionCiudadanoPanelProvider extends PanelProvider
         return $panel
             ->id('atencionCiudadano')
             ->path('atencion-ciudadano')
+            ->login()
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/AtencionCiudadano/Resources'), for: 'App\Filament\AtencionCiudadano\Resources')
-            ->discoverPages(in: app_path('Filament/AtencionCiudadano/Pages'), for: 'App\Filament\AtencionCiudadano\Pages')
+            ->discoverResources(in: module_path('AtencionCiudadano', 'Filament/AtencionCiudadano/Resources'), for: 'Modules\\AtencionCiudadano\\Filament\\AtencionCiudadano\\Resources')
+            ->discoverPages(in: module_path('AtencionCiudadano', 'Filament/AtencionCiudadano/Pages'), for: 'Modules\\AtencionCiudadano\\Filament\\AtencionCiudadano\\Pages')
+            ->discoverWidgets(in: module_path('AtencionCiudadano', 'Filament/AtencionCiudadano/Widgets'), for: 'Modules\\AtencionCiudadano\\Filament\\AtencionCiudadano\\Widgets')
             ->pages([
                 Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/AtencionCiudadano/Widgets'), for: 'App\Filament\AtencionCiudadano\Widgets')
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
