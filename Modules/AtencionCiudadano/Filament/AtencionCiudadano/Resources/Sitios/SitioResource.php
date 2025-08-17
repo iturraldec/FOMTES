@@ -29,8 +29,6 @@ class SitioResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Sitios';
-
     public static function form(Schema $schema): Schema
     {
         return $schema
@@ -45,11 +43,17 @@ class SitioResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('Sitios')
             ->columns([
                 TextColumn::make('nombre')
                     ->searchable(),
-                TextColumn::make('activo'),
+                TextColumn::make('activo')
+                    ->extraAttributes(function (Sitio $sitio) { 
+                        if ($sitio->activo == 'No') {
+                            return ['class' => 'bg-red-300 dark:bg-red-600'];
+                        }
+    
+                        return [];
+                    }, true),
             ])
             ->filters([
                 TrashedFilter::make(),
