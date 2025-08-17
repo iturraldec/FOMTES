@@ -29,13 +29,14 @@ class SitioResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Listado de Sitios a visitar';
+    protected static ?string $recordTitleAttribute = 'Sitios';
 
     public static function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 TextInput::make('nombre')
+                    ->label('Nombre del sitio a visitar')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -48,6 +49,7 @@ class SitioResource extends Resource
             ->columns([
                 TextColumn::make('nombre')
                     ->searchable(),
+                TextColumn::make('activo'),
             ])
             ->filters([
                 TrashedFilter::make(),
