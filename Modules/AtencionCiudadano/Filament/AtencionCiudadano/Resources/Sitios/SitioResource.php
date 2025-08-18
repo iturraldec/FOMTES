@@ -22,6 +22,7 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Select;
 
 class SitioResource extends Resource
 {
@@ -37,6 +38,12 @@ class SitioResource extends Resource
                     ->label('Nombre del sitio a visitar')
                     ->required()
                     ->maxLength(255),
+                Select::make('activo')
+                    ->options([
+                        '1' => 'Sí',
+                        '0' => 'No'
+                    ])
+                    ->label('¿Está activo?')
             ]);
     }
 
@@ -46,21 +53,14 @@ class SitioResource extends Resource
             ->columns([
                 TextColumn::make('nombre')
                     ->searchable(),
-                TextColumn::make('activo')
-                    ->extraAttributes(function (Sitio $sitio) { 
-                        if ($sitio->activo == 'No') {
-                            return ['class' => 'bg-red-300 dark:bg-red-600'];
-                        }
-    
-                        return [];
-                    }, true),
+                TextColumn::make('activo'),
             ])
             ->filters([
                 TrashedFilter::make(),
             ])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->successNotificationTitle('Sitio de visita actualizado!'),
+                DeleteAction::make()->successNotificationTitle('Sitio de visita eliminado!'),
                 ForceDeleteAction::make(),
                 RestoreAction::make(),
             ])
