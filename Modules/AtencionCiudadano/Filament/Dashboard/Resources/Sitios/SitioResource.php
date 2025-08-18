@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\AtencionCiudadano\Filament\AtencionCiudadano\Resources\Sitios;
+namespace Modules\AtencionCiudadano\Filament\Dashboard\Resources\Sitios;
 
-use Modules\AtencionCiudadano\Filament\AtencionCiudadano\Resources\Sitios\Pages\ManageSitios;
+use Modules\AtencionCiudadano\Filament\Dashboard\Resources\Sitios\Pages\ManageSitios;
 use Modules\AtencionCiudadano\Models\Sitio;
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
@@ -45,6 +45,7 @@ class SitioResource extends Resource
                     ])
                     ->label('¿Está activo?')
                     ->default('1')
+                    ->native(false)
             ]);
     }
 

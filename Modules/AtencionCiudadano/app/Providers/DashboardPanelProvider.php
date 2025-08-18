@@ -21,7 +21,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use PanicDevs\Modulite\Attributes\FilamentPanel;
 
 #[FilamentPanel]
-class AtencionCiudadanoPanelProvider extends PanelProvider
+class DashboardPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
@@ -32,9 +32,9 @@ class AtencionCiudadanoPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: module_path('AtencionCiudadano', 'Filament/AtencionCiudadano/Resources'), for: 'Modules\\AtencionCiudadano\\Filament\\AtencionCiudadano\\Resources')
-            ->discoverPages(in: module_path('AtencionCiudadano', 'Filament/AtencionCiudadano/Pages'), for: 'Modules\\AtencionCiudadano\\Filament\\AtencionCiudadano\\Pages')
-            ->discoverWidgets(in: module_path('AtencionCiudadano', 'Filament/AtencionCiudadano/Widgets'), for: 'Modules\\AtencionCiudadano\\Filament\\AtencionCiudadano\\Widgets')
+            ->discoverResources(in: module_path('AtencionCiudadano', 'Filament/Dashboard/Resources'), for: 'Modules\\AtencionCiudadano\\Filament\\Dashboard\\Resources')
+            ->discoverPages(in: module_path('AtencionCiudadano', 'Filament/Dashboard/Pages'), for: 'Modules\\AtencionCiudadano\\Filament\\Dashboard\\Pages')
+            ->discoverWidgets(in: module_path('AtencionCiudadano', 'Filament/Dashboard/Widgets'), for: 'Modules\\AtencionCiudadano\\Filament\\Dashboard\\Widgets')
             ->pages([
                 Dashboard::class,
             ])

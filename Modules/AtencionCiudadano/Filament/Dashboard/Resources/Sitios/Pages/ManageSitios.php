@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\AtencionCiudadano\Filament\AtencionCiudadano\Resources\Sitios\Pages;
+namespace Modules\AtencionCiudadano\Filament\Dashboard\Resources\Sitios\Pages;
 
-use Modules\AtencionCiudadano\Filament\AtencionCiudadano\Resources\Sitios\SitioResource;
+use Modules\AtencionCiudadano\Filament\Dashboard\Resources\Sitios\SitioResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
 

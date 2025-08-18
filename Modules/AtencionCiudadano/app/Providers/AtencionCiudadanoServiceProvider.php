@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use Modules\AtencionCiudadano\app\Providers\AtencionCiudadanoPanelProvider;
+use Modules\AtencionCiudadano\app\Providers\DashboardPanelProvider;
 
 class AtencionCiudadanoServiceProvider extends ServiceProvider
 {
@@ -37,7 +37,7 @@ class AtencionCiudadanoServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
-        $this->app->register(AtencionCiudadanoPanelProvider::class);
+        $this->app->register(DashboardPanelProvider::class);
     }
 
     /**
