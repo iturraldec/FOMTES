@@ -13,7 +13,9 @@ class ManageSitios extends ManageRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()->successNotificationTitle('Sitio de visita creado!'),
+            CreateAction::make()
+                ->label('Crear Sitio de visita')
+                ->successNotificationTitle('Sitio de visita creado!'),
         ];
     }
 }

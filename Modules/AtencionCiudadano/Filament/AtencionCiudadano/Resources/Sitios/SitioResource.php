@@ -44,6 +44,7 @@ class SitioResource extends Resource
                         '0' => 'No'
                     ])
                     ->label('¿Está activo?')
+                    ->default('1')
             ]);
     }
 
@@ -59,8 +60,12 @@ class SitioResource extends Resource
                 TrashedFilter::make(),
             ])
             ->recordActions([
-                EditAction::make()->successNotificationTitle('Sitio de visita actualizado!'),
-                DeleteAction::make()->successNotificationTitle('Sitio de visita eliminado!'),
+                EditAction::make()
+                    ->successNotificationTitle('Sitio de visita actualizado!')
+                    ->label('Editar'),
+                DeleteAction::make()
+                    ->successNotificationTitle('Sitio de visita eliminado!')
+                    ->label('Eliminar'),
                 ForceDeleteAction::make(),
                 RestoreAction::make(),
             ])
