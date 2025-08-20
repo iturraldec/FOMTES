@@ -24,8 +24,6 @@ class PersonaResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Personas';
-
     public static function form(Schema $schema): Schema
     {
         return PersonaForm::configure($schema);

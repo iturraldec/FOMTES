@@ -10,6 +10,7 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 
 class PersonasTable
 {
@@ -17,14 +18,22 @@ class PersonasTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('documento_id')
+                    ->label('C.I.')
+                    ->searchable(),
+                TextColumn::make('nombres')
+                    ->searchable(),
+                TextColumn::make('apellidos')
+                    ->searchable(),
+                TextColumn::make('email')
+                    ->searchable(),
             ])
             ->filters([
                 TrashedFilter::make(),
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
+                EditAction::make()->successNotificationTitle('Persona actualizada!'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

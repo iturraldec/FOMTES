@@ -4,7 +4,7 @@ namespace Modules\AtencionCiudadano\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Municipio;
+use App\Models\Parroquia;
 
 class Persona extends Model
 {
@@ -18,11 +18,11 @@ class Persona extends Model
   /**
    * The attributes that are mass assignable.
    */
-  protected $fillable = ['documento_id', 'nombres', 'apellidos', 'email', 'municipio_id', 'parroquia_id', 'direccion', 'observaciones'];
+  protected $fillable = ['documento_id', 'nombres', 'apellidos', 'email', 'parroquia_id', 'direccion', 'observaciones'];
 
   //
-  public function municipio()
+  public function parroquia()
   {
-    return $this->belongsTo(Municipio::class, 'municipio_id', 'id_municipio');
+    return $this->belongsTo(Parroquia::class, 'parroquia_id', 'id_parroquia');
   }
 }

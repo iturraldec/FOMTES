@@ -2,6 +2,8 @@
 
 namespace Modules\AtencionCiudadano\Filament\Dashboard\Resources\Personas\Schemas;
 
+use App\Models\Municipio;
+use App\Models\Parroquia;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -15,28 +17,42 @@ class PersonaForm
     return $schema
         ->components([
           TextInput::make('documento_id')
-                    ->label('Cédula de Identidad')
-                    ->required()
-                    ->maxLength(20),
+            ->label('Cédula de Identidad')
+            ->required()
+            ->maxLength(20),
           TextInput::make('nombres')
-                    ->label('Nombre(s) de la persona')
-                    ->required()
-                    ->maxLength(100),
-          TextInput::make('nombres')
-                    ->label('Apellido(s) de la persona')
-                    ->required()
-                    ->maxLength(100),
+            ->label('Nombre(s) de la persona')
+            ->required()
+            ->maxLength(100),
+          TextInput::make('apellidos')
+            ->label('Apellido(s) de la persona')
+            ->required()
+            ->maxLength(100),
           TextInput::make('email')
-                    ->label('Correo electrónico')
-                    ->maxLength(100),
-          Select::make('municipio_id')
-                    ->relationship(name: 'municipio',
-                        titleAttribute: 'municipio',
-                        modifyQueryUsing: fn (Builder $query) => $query->where('id_estado', 13))
-                    ->preload(),
-          TextInput::make('parroquia_id'),
+            ->label('Correo electrónico')
+            ->maxLength(100),
+          Select::make('id_municipio')
+            ->label('Municipio')
+            ->options(Municipio::Where('id_estado', 13)->pluck('municipio', 'id_municipio'))
+            ->required()
+            ->preload()
+            ->live(),
+          Select::make('parroquia_id')
+            ->label('Parroquia')
+            ->options(function (callable $get) {
+                $municipioId = $get('id_municipio');
+
+                if ($municipioId) {
+                    return Parroquia::where('id_municipio', $municipioId)
+                                    ->pluck('parroquia', 'id_parroquia');
+                }
+
+                return [];
+            })
+            ->required()
+            ->placeholder('Seleccione un municipio primero'),
           Textarea::make('direccion')
-                    ->required(),
+            ->required(),
           Textarea::make('observaciones'),
         ]);
   }

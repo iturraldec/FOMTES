@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\AtencionCiudadano\Models\Persona;
+use App\Models\Parroquia;
 
 class Municipio extends Model
 {
 
-  public function persona()
+  public function parroquia()
   {
-    return $this->hasMany(Persona::class, 'municipio_id')->where('id_estado', 13);
+    return $this->hasMany(Parroquia::class, 'id_municipio');
   }
 }
