@@ -42,7 +42,12 @@ class PersonaForm
             ->options(Municipio::Where('id_estado', 13)->pluck('municipio', 'id_municipio'))
             ->required()
             ->preload()
-            ->live(),
+            ->live()
+            ->afterStateHydrated(function ($component, $state, $record) {
+                if ($record && $record->parroquia) {
+                    $component->state($record->parroquia->id_municipio);
+                }
+            }),
 
           Select::make('parroquia_id')
             ->label('Parroquia')
@@ -56,7 +61,6 @@ class PersonaForm
                     )
             )
             ->required()
-            ->live()
             ->placeholder('Seleccione un municipio primero'),
 
           Textarea::make('direccion')

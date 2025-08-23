@@ -8,8 +8,8 @@ use App\Models\Parroquia;
 class Municipio extends Model
 {
 
-  public function parroquia()
+  public function parroquias()
   {
-    return $this->hasMany(Parroquia::class, 'id_municipio');
+    return $this->hasMany(Parroquia::class, 'id_municipio', 'id_municipio');
   }
 }
