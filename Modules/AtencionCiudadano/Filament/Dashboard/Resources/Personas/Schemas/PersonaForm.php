@@ -21,40 +21,47 @@ class PersonaForm
             ->required()
             ->maxLength(20)
             ->unique(),
-          TextInput::make('nombres')
+
+            TextInput::make('nombres')
             ->label('Nombre(s) de la persona')
             ->required()
             ->maxLength(100),
-          TextInput::make('apellidos')
+
+            TextInput::make('apellidos')
             ->label('Apellido(s) de la persona')
             ->required()
             ->maxLength(100),
-          TextInput::make('email')
+
+            TextInput::make('email')
             ->label('Correo electrónico')
             ->maxLength(100)
             ->unique(),
+
           Select::make('id_municipio')
             ->label('Municipio')
             ->options(Municipio::Where('id_estado', 13)->pluck('municipio', 'id_municipio'))
             ->required()
             ->preload()
             ->live(),
+
           Select::make('parroquia_id')
             ->label('Parroquia')
-            ->options(function (callable $get) {
-                $municipioId = $get('id_municipio');
-
-                if ($municipioId) {
-                    return Parroquia::where('id_municipio', $municipioId)
-                                    ->pluck('parroquia', 'id_parroquia');
-                }
-
-                return [];
-            })
+            ->relationship(
+                name: 'parroquia',
+                titleAttribute: 'parroquia',
+                modifyQueryUsing: fn (Builder $query, callable $get) =>
+                    $query->when(
+                        $get('id_municipio'),
+                        fn ($q, $municipioId) => $q->where('id_municipio', $municipioId)
+                    )
+            )
             ->required()
+            ->live()
             ->placeholder('Seleccione un municipio primero'),
+
           Textarea::make('direccion')
             ->required(),
+
           Textarea::make('observaciones'),
         ]);
   }
