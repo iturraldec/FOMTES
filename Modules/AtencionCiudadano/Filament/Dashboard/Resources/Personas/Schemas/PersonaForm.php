@@ -19,7 +19,8 @@ class PersonaForm
           TextInput::make('documento_id')
             ->label('Cédula de Identidad')
             ->required()
-            ->maxLength(20),
+            ->maxLength(20)
+            ->unique(),
           TextInput::make('nombres')
             ->label('Nombre(s) de la persona')
             ->required()
@@ -30,7 +31,8 @@ class PersonaForm
             ->maxLength(100),
           TextInput::make('email')
             ->label('Correo electrónico')
-            ->maxLength(100),
+            ->maxLength(100)
+            ->unique(),
           Select::make('id_municipio')
             ->label('Municipio')
             ->options(Municipio::Where('id_estado', 13)->pluck('municipio', 'id_municipio'))

@@ -28,7 +28,7 @@ class SitioResource extends Resource
 {
     protected static ?string $model = Sitio::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice;
 
     public static function form(Schema $schema): Schema
     {
@@ -37,6 +37,7 @@ class SitioResource extends Resource
                 TextInput::make('nombre')
                     ->label('Nombre del sitio a visitar')
                     ->required()
+                    ->unique()
                     ->maxLength(255),
                 Select::make('activo')
                     ->options([

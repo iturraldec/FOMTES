@@ -20,11 +20,14 @@ class PersonasTable
             ->columns([
                 TextColumn::make('documento_id')
                     ->label('C.I.')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('nombres')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('apellidos')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('email')
                     ->searchable(),
             ])

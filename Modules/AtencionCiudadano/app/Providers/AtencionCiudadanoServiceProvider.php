@@ -1,5 +1,9 @@
 <?php
 
+/*
+    SCRIPT PERTENECIENTE AL MANJO DE MODULOS
+*/
+
 namespace Modules\AtencionCiudadano\Providers;
 
 use Illuminate\Support\Facades\Blade;
