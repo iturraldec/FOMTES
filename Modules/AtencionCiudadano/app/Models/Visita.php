@@ -19,4 +19,16 @@ class Visita extends Model
    * The attributes that are mass assignable.
    */
   protected $fillable = ['persona_id', 'fecha', 'sitio_id', 'observaciones'];
+
+  //
+  public function persona()
+  {
+    return $this->belongsTo(Persona::class);
+  }
+
+  //
+  public function sitio()
+  {
+    return $this->belongsTo(Sitio::class, 'sitio_id', 'id');
+  }
 }

@@ -25,4 +25,10 @@ class Persona extends Model
   {
     return $this->belongsTo(Parroquia::class, 'parroquia_id', 'id_parroquia');
   }
+
+  //
+  public function visitas()
+  {
+    return $this->hasMany(Visita::class);
+  }
 }

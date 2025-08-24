@@ -27,4 +27,10 @@ class Sitio extends Model
             get: fn (bool $value) => ($value) ? 'Sí' : 'No',
         );
     }
+
+    //
+    public function visitas()
+    {
+        return $this->hasMany(Visita::class, 'sitio_id');
+    }
 }

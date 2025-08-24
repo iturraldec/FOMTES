@@ -16,7 +16,7 @@ return new class extends Migration
             $table->mediumInteger('persona_id');
             $table->datetime('fecha');
             $table->smallInteger('sitio_id');
-            $table->text('observaciones');
+            $table->text('observaciones')->nullable(true)->default(null);
             $table->timestamps();
             $table->softDeletes();
 

@@ -19,26 +19,19 @@ class VisitasTable
         return $table
             ->columns([
                 TextColumn::make('persona_id')
-                    ->numeric()
+                    ->label('Nombre de la persona')
+                    ->formatStateUsing(fn ($state, $record) =>
+                        $record->persona?->apellidos . ', '. $record->persona?->nombres
+                    )
                     ->sortable(),
+                
                 TextColumn::make('fecha')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('sitio_id')
-                    ->numeric()
+                
+                TextColumn::make('sitio.nombre')
+                    ->label('Sitio visitado')
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 TrashedFilter::make(),
