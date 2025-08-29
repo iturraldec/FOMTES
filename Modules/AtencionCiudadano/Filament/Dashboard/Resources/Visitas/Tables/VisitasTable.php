@@ -17,6 +17,7 @@ class VisitasTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('persona_id')
                     ->label('Nombre de la persona')
@@ -25,7 +26,8 @@ class VisitasTable
                     )
                     ->sortable(),
                 
-                TextColumn::make('fecha')
+                TextColumn::make('created_at')
+                    ->label('Fecha')
                     ->dateTime()
                     ->sortable(),
                 

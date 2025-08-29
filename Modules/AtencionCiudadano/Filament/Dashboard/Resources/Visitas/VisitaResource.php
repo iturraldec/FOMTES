@@ -21,6 +21,7 @@ use Modules\AtencionCiudadano\Models\Visita;
 class VisitaResource extends Resource
 {
     protected static ?string $model = Visita::class;
+    protected static ?int $navigationSort = 3;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 

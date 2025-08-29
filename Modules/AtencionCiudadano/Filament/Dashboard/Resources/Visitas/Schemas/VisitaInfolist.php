@@ -13,16 +13,10 @@ class VisitaInfolist
             ->components([
                 TextEntry::make('persona_id')
                     ->numeric(),
-                TextEntry::make('fecha')
+                TextEntry::make('created_at')
                     ->dateTime(),
                 TextEntry::make('sitio_id')
                     ->numeric(),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-                TextEntry::make('updated_at')
-                    ->dateTime(),
-                TextEntry::make('deleted_at')
-                    ->dateTime(),
             ]);
     }
 }

@@ -21,6 +21,8 @@ class PersonaResource extends Resource
 {
     protected static ?string $model = Persona::class;
 
+    protected static ?int $navigationSort = 2;
+
     protected static string|BackedEnum|null $navigationIcon = 'fluentui-people-team-28';
 
     public static function form(Schema $schema): Schema

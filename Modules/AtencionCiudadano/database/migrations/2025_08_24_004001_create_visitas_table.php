@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('AtencionCiudadano.visitas', function (Blueprint $table) {
             $table->increments('id');
             $table->mediumInteger('persona_id');
-            $table->datetime('fecha');
             $table->smallInteger('sitio_id');
             $table->text('observaciones')->nullable(true)->default(null);
             $table->timestamps();

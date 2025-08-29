@@ -18,7 +18,7 @@ class Visita extends Model
   /**
    * The attributes that are mass assignable.
    */
-  protected $fillable = ['persona_id', 'fecha', 'sitio_id', 'observaciones'];
+  protected $fillable = ['persona_id', 'sitio_id', 'observaciones', 'created_at'];
 
   //
   public function persona()

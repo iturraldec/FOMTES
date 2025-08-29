@@ -14,11 +14,15 @@ class VisitaForm
     {
         return $schema
             ->components([
-                TextInput::make('persona_id')
-                    ->required()
-                    ->numeric(),
+                TextInput::make('nombre_persona')
+                    ->label('Nombre de la persona')
+                    ->afterStateHydrated(function (TextInput $component, $record) {
+                        $component->state($record->persona->nombres . ' ' . $record->persona->apellidos);
+                    })
+                    ->readOnly(),
 
-                DateTimePicker::make('fecha')
+                DateTimePicker::make('created_at')
+                    ->label('Fecha')
                     ->required()
                     ->default(now()),
 

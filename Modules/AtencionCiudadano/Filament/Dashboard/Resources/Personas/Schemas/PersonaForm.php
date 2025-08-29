@@ -60,6 +60,7 @@ class PersonaForm
                         fn ($q, $municipioId) => $q->where('id_municipio', $municipioId)
                     )
             )
+            ->live()
             ->required()
             ->placeholder('Seleccione un municipio primero'),
 

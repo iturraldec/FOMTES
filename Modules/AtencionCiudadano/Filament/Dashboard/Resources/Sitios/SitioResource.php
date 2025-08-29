@@ -28,6 +28,8 @@ class SitioResource extends Resource
 {
     protected static ?string $model = Sitio::class;
 
+    protected static ?int $navigationSort = 1;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice;
 
     public static function form(Schema $schema): Schema
@@ -53,9 +55,11 @@ class SitioResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('nombre')
             ->columns([
                 TextColumn::make('nombre')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('activo'),
             ])
             ->filters([
@@ -73,11 +77,11 @@ class SitioResource extends Resource
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                ]),
-            ]);
+                DeleteBulkAction::make(),
+                ForceDeleteBulkAction::make(),
+                RestoreBulkAction::make(),
+            ]),
+        ]);
     }
 
     public static function getPages(): array
