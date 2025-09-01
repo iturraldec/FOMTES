@@ -2,9 +2,9 @@
 
 namespace Modules\AtencionCiudadano\Filament\Dashboard\Resources\Visitas\Pages;
 
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Modules\AtencionCiudadano\Filament\Dashboard\Resources\Visitas\VisitaResource;
+use Filament\Actions\Action;
 
 class ListVisitas extends ListRecords
 {
@@ -13,7 +13,10 @@ class ListVisitas extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            /* Action::make('imprimir')
+                ->label('Imprimir visitas')
+                ->icon('heroicon-o-printer')
+                ->modalHeading('Imprimir visitas'), */
         ];
     }
 }

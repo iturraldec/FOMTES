@@ -21,6 +21,7 @@ class PersonasTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('nombres')
             ->columns([
                 TextColumn::make('documento_id')
                     ->label('C.I.')

@@ -22,17 +22,17 @@ class PersonaForm
             ->maxLength(20)
             ->unique(),
 
-            TextInput::make('nombres')
+          TextInput::make('nombres')
             ->label('Nombre(s) de la persona')
             ->required()
             ->maxLength(100),
 
-            TextInput::make('apellidos')
+          TextInput::make('apellidos')
             ->label('Apellido(s) de la persona')
             ->required()
             ->maxLength(100),
 
-            TextInput::make('email')
+          TextInput::make('email')
             ->label('Correo electrónico')
             ->maxLength(100)
             ->unique(),
@@ -40,7 +40,6 @@ class PersonaForm
           Select::make('id_municipio')
             ->label('Municipio')
             ->options(Municipio::Where('id_estado', 13)->pluck('municipio', 'id_municipio'))
-            ->required()
             ->preload()
             ->live()
             ->afterStateHydrated(function ($component, $state, $record) {

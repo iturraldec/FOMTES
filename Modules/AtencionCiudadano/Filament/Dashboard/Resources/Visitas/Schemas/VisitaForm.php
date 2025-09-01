@@ -17,7 +17,7 @@ class VisitaForm
                 TextInput::make('nombre_persona')
                     ->label('Nombre de la persona')
                     ->afterStateHydrated(function (TextInput $component, $record) {
-                        $component->state($record->persona->nombres . ' ' . $record->persona->apellidos);
+                        $component->state($record?->persona?->apellidos .', ' . $record?->persona?->nombres);
                     })
                     ->readOnly(),
 

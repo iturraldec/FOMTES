@@ -34,7 +34,7 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/private'),
             'serve' => true,
-            'throw' => false,
+            'throw' => true,
             'report' => false,
         ],
 
@@ -75,6 +75,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('images') => storage_path('app/public/images'),
     ],
-
+//echo asset('storage/file.txt');
 ];
