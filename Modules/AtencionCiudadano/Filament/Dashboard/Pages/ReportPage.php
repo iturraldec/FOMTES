@@ -33,6 +33,7 @@ class ReportPage extends Page implements HasForms
     {
         return [
             Action::make('imprimir')
+                ->icon('heroicon-s-printer')
                 ->action('imprimirReporte'),
         ];
     }

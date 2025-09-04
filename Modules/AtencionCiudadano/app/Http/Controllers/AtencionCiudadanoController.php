@@ -11,6 +11,8 @@ class AtencionCiudadanoController extends Controller
 
     public function execute(string $reportType, string $desde, string $hasta)
     {
+        $data['desde'] = date("d/m/Y", strtotime($desde));
+        $data['hasta'] = date("d/m/Y", strtotime($hasta));
         $data['visitas'] = Visita::with('persona')
                                     ->with('sitio')
                                     ->whereBetween('created_at', [$desde, $hasta])

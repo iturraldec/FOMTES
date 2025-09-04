@@ -5,6 +5,7 @@ namespace Modules\AtencionCiudadano\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\AtencionCiudadano\Models\Persona;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Visita extends Model
 {
@@ -19,6 +20,14 @@ class Visita extends Model
    * The attributes that are mass assignable.
    */
   protected $fillable = ['persona_id', 'sitio_id', 'observaciones', 'created_at'];
+
+  //
+  protected function createdAt(): Attribute
+  {
+    return Attribute::make(
+      get: fn ($value) => date('d/m/Y H:i', strtotime($value)),
+    );
+  }
 
   //
   public function persona()

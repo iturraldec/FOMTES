@@ -24,41 +24,28 @@
       margin-bottom: 0.5px;
     }
 
-    .numero {
+    .tabla {
+      width: 100%;
       margin: 0;
-      font-size: 14px;
-      font-weight: bold;
-      font-style: italic;
+      padding: 0;
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-size: 10px;
     }
 
-    .fecha {
-      margin: 0;
-      font-size: 12px;
-      font-weight: bold;
-      font-style: italic;
-      text-align: right;
-    }
+    .tabla th,
+    .tabla td {
+      border: 1px solid black;
+      padding: 6px;
+      }
 
-    .recibe {
-      margin: 0;
-      font-size: 12px;
-      text-align: left;
-      font-weight: bold;
-    }
-
-    .motivo {
-      margin: 0;
-      margin-top: 10px;
-      font-size: 12px;
-      text-align: justify;
-    }
-
-    .envia {
+    .tabla .encabezado {
       text-align: center;
-      margin: 0;
-      margin-top: 6rem;
       font-size: 12px;
-      font-weight: bold;
+    }
+
+    .tabla .texto {
+      text-align: left;
     }
 
     .pre-footer {
@@ -123,11 +110,5 @@
     @yield('content')
   </main>
 
-
-  <div class="pre-footer">
-    <section class="envia">{{ config('fomtes.directores.informatica.nombre') }}</section>
-    <p>Director de Tecnologías de la Información</p>
-    <p>{{ config('fomtes.directores.informatica.documento') }}</p>
-  </div>
 </body>
 </html>
