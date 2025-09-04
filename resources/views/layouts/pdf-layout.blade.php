@@ -105,7 +105,7 @@
             <p>FONDO MERIDEÑO PARA EL DESARROLLO ECONÓMICO SUSTENTABLE</p>
             <p>(FOMDES)</p>
           </th>
-          <th scope="col"><img src="{{ Storage::disk('public')->get('images/logo-gobernacion.png') }}" width="75" height="auto"></th>
+          <th scope="col"><img src="{{ public_path('images/logo-gobernacion.png') }}" width="75" height="auto"></th>
         </tr>
       </thead>
     </table>

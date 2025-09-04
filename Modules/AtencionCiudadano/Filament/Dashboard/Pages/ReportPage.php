@@ -9,18 +9,15 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Redirect;
 
+//
 class ReportPage extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    public ?string $reportType = null;
-
-    public ?string $fechaDesde = null;
-
-    public ?string $fechaHasta = null;
+    public array $data = [];
 
     protected static ?int $navigationSort = 4;
 
@@ -35,7 +32,8 @@ class ReportPage extends Page implements HasForms
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('Imprimir'),
+            Action::make('imprimir')
+                ->action('imprimirReporte'),
         ];
     }
 
@@ -43,56 +41,38 @@ class ReportPage extends Page implements HasForms
     {
         return $form
             ->schema([
-                Section::make()
-                    ->schema([
-                        Select::make('reportType')
-                            ->label('Tipo de Reporte')
-                            ->options([
-                                'Listado' => 'Listado',
-                                'Estadisticas' => 'Estadísticas',
-                            ])
-                            ->reactive(),
-        
-                        DatePicker::make('desde')
-                            ->label('Desde')
-                            ->visible(fn ($get) => $get('reportType') === 'Listado'),
-        
-                        DatePicker::make('hasta')
-                            ->label('Hasta')
-                            ->visible(fn ($get) => $get('reportType') === 'Listado'),
+                Select::make('reportType')
+                    ->label('Tipo de Reporte')
+                    ->options([
+                        'Listado' => 'Listado',
+                        'Estadisticas' => 'Estadísticas',
                     ])
-                ->compact()
-            ]);
+                    ->required()
+                    ->live(),
+
+                DatePicker::make('desde')
+                    ->label('Desde')
+                    ->required(),
+
+                DatePicker::make('hasta')
+                    ->label('Hasta')
+                    ->required(),
+            ])
+            ->statePath('data');
     }
 
-/*     public function getFormSchema(): array
+    //
+    public function imprimirReporte()
     {
-        return [
-            Select::make('reportType')
-                ->label('Tipo de Reporte')
-                ->options([
-                    'Listado' => 'Listado',
-                    'Estadisticas' => 'Estadísticas',
-                ])
-                ->reactive(),
+        $data = $this->form->validate();
 
-            DatePicker::make('desde')
-                ->label('Reporte desde')
-                ->visible(fn ($get) => $get('reportType') === 'Listado'),
-
-            DatePicker::make('hasta')
-                ->label('Reporte hasta')
-                ->visible(fn ($get) => $get('reportType') === 'Listado'),
+        $params = [
+            'reportType' => $this->data['reportType'],
+            'desde' => $this->data['desde'],
+            'hasta' => $this->data['hasta'],
         ];
+        
+        return Redirect::route('visitas.print', $params);
     }
-     */
-    /* protected function getFormModel(): string | null
-    {
-        return null;
-    }
- */
-    /* public function mount(): void
-    {
-        $this->form->fill();
-    } */
+
 }
