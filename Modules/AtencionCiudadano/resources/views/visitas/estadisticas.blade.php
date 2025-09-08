@@ -6,25 +6,24 @@
     <table class="tabla">
         <thead class="encabezado">
             <tr>
+                <th>Descripción</th>
                 <th>Cant.</th>
-                <th>Sitio</th>
             </tr>
         </thead>
         <tbody class="texto">
             <tr>
-                <td>Total Genearal Personas</td>
+                <td>Personas inscritas-total general</td>
                 <td>{{ $total_personas }}</td>
             </tr>
-            {{-- @foreach($visitas as $visita)
+            @foreach($total_sitios as $sitio)
                 <tr>
-                    <td>{{ $visita->persona->apellidos }}, {{ $visita->persona->nombres }}</td>
-                    <td>{{ $visita->created_at }}</td>
-                    <td>{{ $visita->sitio->nombre }}</td>
+                    <td>{{ $sitio->nombre }}</td>
+                    <td>{{ $sitio->count }}</td>
                 </tr>
-            @endforeach --}}
+            @endforeach
 
             <tr>
-                <td>Visitas</td>
+                <td>Total visitas en el lapso</td>
                 <td>{{ $total_visitas }}</td>
             </tr>
         </tbody>

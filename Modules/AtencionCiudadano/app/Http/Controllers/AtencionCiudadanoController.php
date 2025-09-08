@@ -31,7 +31,7 @@ class AtencionCiudadanoController extends Controller
             $sql = 'SELECT COUNT(*), b.nombre 
                     FROM "AtencionCiudadano"."visitas" a 
                         INNER JOIN "AtencionCiudadano"."sitios" b ON a.sitio_id = b.id
-                    WHERE DATE(a.created_at) BETWEEN ? AND ? 
+                    WHERE a.deleted_at IS NULL AND DATE(a.created_at) BETWEEN ? AND ? 
                     GROUP BY b.nombre ';
             $data['total_sitios'] = DB::select($sql, [$desde, $hasta]);
 
