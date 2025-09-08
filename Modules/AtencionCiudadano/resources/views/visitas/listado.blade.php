@@ -15,7 +15,7 @@
             @foreach($visitas as $visita)
                 <tr>
                     <td>{{ $visita->persona->apellidos }}, {{ $visita->persona->nombres }}</td>
-                    <td>{{ $visita->created_at }}</td>
+                    <td>{{ date('d/m/Y H:i', strtotime($visita->created_at)) }}</td>
                     <td>{{ $visita->sitio->nombre }}</td>
                 </tr>
             @endforeach

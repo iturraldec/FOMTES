@@ -1,7 +1,7 @@
 @extends('layouts.pdf-layout')
 
 @section('content')
-  <h4>Reporte Estadísticos de las Visitas del {{ $desde }} al {{ $hasta }}</h4>
+  <h4>Reporte Estadístico: Visitas del {{ $desde }} al {{ $hasta }}</h4>
 
     <table class="tabla">
         <thead class="encabezado">
@@ -11,6 +11,10 @@
             </tr>
         </thead>
         <tbody class="texto">
+            <tr>
+                <td>Total Genearal Personas</td>
+                <td>{{ $total_personas }}</td>
+            </tr>
             {{-- @foreach($visitas as $visita)
                 <tr>
                     <td>{{ $visita->persona->apellidos }}, {{ $visita->persona->nombres }}</td>
@@ -18,6 +22,11 @@
                     <td>{{ $visita->sitio->nombre }}</td>
                 </tr>
             @endforeach --}}
+
+            <tr>
+                <td>Visitas</td>
+                <td>{{ $total_visitas }}</td>
+            </tr>
         </tbody>
     </table>
 @endsection

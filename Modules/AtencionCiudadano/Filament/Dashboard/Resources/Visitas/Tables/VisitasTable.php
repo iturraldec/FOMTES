@@ -28,7 +28,7 @@ class VisitasTable
                 
                 TextColumn::make('created_at')
                     ->label('Fecha')
-                    ->dateTime()
+                    ->dateTime('d/m/Y H:i')
                     ->sortable(),
                 
                 TextColumn::make('sitio.nombre')

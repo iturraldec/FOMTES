@@ -22,14 +22,6 @@ class Visita extends Model
   protected $fillable = ['persona_id', 'sitio_id', 'observaciones', 'created_at'];
 
   //
-  protected function createdAt(): Attribute
-  {
-    return Attribute::make(
-      get: fn ($value) => date('d/m/Y H:i', strtotime($value)),
-    );
-  }
-
-  //
   public function persona()
   {
     return $this->belongsTo(Persona::class);

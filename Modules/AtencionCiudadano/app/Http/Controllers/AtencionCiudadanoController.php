@@ -35,7 +35,7 @@ class AtencionCiudadanoController extends Controller
                     GROUP BY b.nombre ';
             $data['total_sitios'] = DB::select($sql, [$desde, $hasta]);
 
-            $sql = 'SELECT count(*) AS total FROM "AtencionCiudadano"."visitas" WHERE DATE(created_at) BETWEEN ? AND ?;';
+            $sql = 'SELECT count(*) AS total FROM "AtencionCiudadano"."visitas" WHERE deleted_at IS NULL AND DATE(created_at) BETWEEN ? AND ?;';
             $data['total_visitas'] = DB::select($sql, [$desde, $hasta])[0]->total;
 
             $pdf = Pdf::loadView('atencionciudadano::visitas.estadisticas', $data);
