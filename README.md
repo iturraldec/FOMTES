@@ -1,4 +1,5 @@
-SISTEMA FOMTES
+# SISTEMA FOMTES
+
 - Tecnología utilizada:
   -- PHP version 8.4.8
   -- Laravel version 12.0
